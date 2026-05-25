@@ -1,0 +1,21 @@
+@define-mixin value-state-color {
+  &[data-value-state='Info'] {
+    color: var(--sap-brand-blue-8);
+    --libella-icon-color: var(--sap-brand-blue-8);
+  }
+
+  &[data-value-state='Success'] {
+    color: var(--sap-brand-green-8);
+    --libella-icon-color: var(--sap-brand-green-8);
+  }
+
+  &[data-value-state='Warning'] {
+    color: var(--sap-brand-mango-8);
+    --libella-icon-color: var(--sap-brand-mango-8);
+  }
+
+  &[data-value-state='Error'] {
+    color: var(--sap-brand-red-8);
+    --libella-icon-color: var(--sap-brand-red-8);
+  }
+}

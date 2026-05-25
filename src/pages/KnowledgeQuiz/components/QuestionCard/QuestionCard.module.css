@@ -1,0 +1,156 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.question {
+  font-size: var(--ion-font-size-heading-1);
+  font-weight: 700;
+  line-height: 130%;
+  padding: 3.5rem 0rem;
+  color: var(--sap-brand-blue-10);
+}
+
+.answer {
+  background-color: var(--sap-brand-blue-1);
+  border-radius: 3rem;
+  margin-top: var(--ion-spacing-xxx-large);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.5s ease-in-out;
+  font-size: 1vh;
+}
+
+.answer button {
+  border-radius: 3rem;
+  min-height: 3.75rem;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--ion-spacing-xxx-large);
+  font-size: var(--ion-font-size-heading-4);
+  font-weight: 400;
+  box-sizing: border-box;
+  transition: background-color 0.5s ease-in-out;
+
+  &[data-state='selected'],
+  &[data-state='normal'] {
+    box-shadow: 0rem 0.0625rem 0.25rem 0rem rgb(from rgb(20, 45, 120) r g b / 25%);
+  }
+
+  &[data-state='selected'] {
+    color: var(--sap-brand-white);
+  }
+
+  &[data-state='normal'] {
+    color: var(--sap-brand-blue-8);
+  }
+
+  &[data-state='success'] {
+    color: var(--sap-brand-green-8);
+    background-color: var(--sap-brand-green-1);
+    box-shadow: 0rem 0.0625rem 0.25rem 0rem rgb(from rgb(37, 111, 58) r g b / 25%);
+  }
+
+  &[data-state='error'] {
+    color: var(--sap-brand-red-8);
+    background-color: var(--sap-brand-red-1);
+    box-shadow: 0rem 0.0625rem 0.25rem 0rem rgb(from rgb(170, 8, 8) r g b / 25%);
+  }
+}
+
+.answer button > span {
+  width: 90%;
+}
+
+.selected {
+  background-color: var(--sap-brand-blue-7);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.feedbackWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  min-height: 2.5rem;
+}
+
+.answerInfo,
+.answerChecked {
+  left: 0;
+  top: 0;
+  width: 100%;
+  font-size: var(--ion-font-size-heading-5);
+  font-weight: 400;
+  text-align: left;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+
+  & > span {
+    padding-left: var(--ion-spacing-large);
+  }
+}
+
+.answerInfo {
+  color: var(--sap-brand-blue-10);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.answerChecked {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+  &[data-state='success'] {
+    color: var(--sap-brand-green-8);
+  }
+
+  &[data-state='error'] {
+    color: var(--sap-brand-red-8);
+  }
+}
+
+.facts {
+  display: flex;
+  justify-content: center;
+  gap: 3.5rem;
+  padding-bottom: 3rem;
+  margin-top: var(--ion-spacing-xxx-large);
+}
+
+.details {
+  padding-top: 3.5rem;
+  max-height: 13rem;
+  font-size: var(--ion-font-size-heading-3);
+  font-weight: 350;
+  line-height: 130%;
+  margin: auto;
+}
+
+.iconStyleSelected {
+  --libella-icon-color: var(--sap-brand-white);
+  --libella-icon-size: var(--ion-font-size-heading-4);
+}
+
+.iconStyleCorrect {
+  --libella-icon-color: var(--sap-brand-green-8);
+  --libella-icon-size: var(--ion-font-size-heading-4);
+}
+
+.iconStyleWrong {
+  --libella-icon-color: var(--sap-brand-red-8);
+  --libella-icon-size: var(--ion-font-size-heading-4);
+}
+
+.iconStyleMessage {
+  --libella-icon-color: var(--sap-brand-white);
+  --libella-icon-size: var(--ion-font-size-heading-4);
+}

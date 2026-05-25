@@ -1,0 +1,39 @@
+{
+  "include": ["src", "types", "test", "*.config.ts", "*.config.js", "plopfile.js", "scripts"],
+  "compilerOptions": {
+    "module": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    // "types": ["vite/client", "vitest/globals"],
+    "importHelpers": true,
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "Bundler",
+    "baseUrl": "src",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "target": "es6",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": { "goToDefinition": true }
+      }
+    ]
+  }
+}

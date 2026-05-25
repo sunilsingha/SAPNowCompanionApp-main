@@ -1,0 +1,281 @@
+.card-wrapper {
+  overflow: visible;
+  width: 100%;
+  padding: 2rem 1rem;
+  margin: 0; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Header */
+.header {
+  font-size: 2rem;
+  font-weight: 350;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #fff;
+}
+.header span {
+  color: #fff;
+}
+
+.intro-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  color: black; 
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2%;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  animation: fadeInUp 0.5s ease-out;
+}
+
+
+.intro-heading {
+  font-size:2.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.intro-text {
+  font-size: 1.75rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Buttons */
+.generate-btn,
+.save-btn {
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+
+.generate-btn {
+  background: #16a34a; /* green-600 */
+  margin-bottom: 1rem;
+}
+.generate-btn:hover {
+  background: #15803d; /* green-700 */
+}
+.save-btn {
+  background: #0284c7; /* sky-600 */
+}
+.save-btn:hover {
+  background: #0369a1; /* sky-700 */
+}
+
+/* Card container */
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 922px;
+  aspect-ratio: 922 / 594;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  margin: 1rem 0;
+  padding: 0 1rem; 
+}
+
+/* Portrait */
+.portrait {
+  position: absolute;
+  top: 27%;
+  left: 5%;
+  width: 28%;
+  height: auto;
+  max-height: 45%;
+  object-fit: cover;
+  z-index: 10;
+  border-radius: 8px;
+}
+
+/* Name & Company */
+.name-company {
+  position: absolute;
+  top: 24%;
+  left: 38%;
+  width: 55%;
+  text-align: center;
+  color: #fff;
+}
+.name-company .name {
+  font-size: 3vw;
+  font-weight: bold;
+  line-height: 1.1;
+  margin-top: 10px;
+  word-wrap: break-word;
+}
+.name-company .company {
+  font-size: 1.5vw;
+  margin-top: 4px;
+}
+
+/* SAP Personality */
+.sap-personality {
+  position: absolute;
+  top: 57.5%;
+  left: 37%;
+  width: 58%;
+  padding: 1rem;
+  color: #fff;
+  text-align: center;
+}
+.sap-personality .title {
+  font-size: 2vw;
+  font-weight: bold;
+}
+.sap-personality .desc {
+  font-size: 1.3vw;
+  margin: 0.5rem 0;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #0070f3;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive typography fallback for very small screens */
+@media (max-width: 480px) {
+  .card {
+    width: 100%; /* adds 1rem margin on both sides */
+    margin: 1rem auto;
+  }
+
+  .name-company .name {
+    font-size: 2rem;
+  }
+
+  .name-company .company {
+    font-size: 1.5rem;
+  }
+
+  .sap-personality .title {
+    font-size: 1.5rem;
+  }
+
+  .sap-personality .desc {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* LinkedIn Share Card */
+.linkedin-share-card {
+  width: 80%;
+  max-width: 550px;
+  margin: 1rem auto;
+  padding: 1rem;
+  text-align: center;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Title inside LinkedIn card */
+.linkedin-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 0.75rem;
+}
+
+/* Body text inside LinkedIn card */
+.linkedin-text {
+  font-size: 1.5rem;
+  color: black;
+  margin-bottom: 0.8
+  rem;
+  line-height: 1.6;
+}
+
+/* LinkedIn Share Button */
+.linkedin-share-button {
+  display: flex;
+  justify-content: center;     
+  align-items: center;       
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;   
+  text-align: center;
+}
+
+/* LinkedIn icon styling */
+.linkedin-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.card-button-row {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Responsive typography fallback for very small screens */
+@media (max-width: 1200px) {
+  .card {
+    width: 100%; /* adds 1rem margin on both sides */
+    margin: 1rem auto;
+  }
+
+  .name-company .name {
+    font-size: 2rem;
+  }
+
+  .name-company .company {
+    font-size: 1.5rem;
+  }
+
+  .sap-personality .title {
+    font-size: 1.5rem;
+  }
+
+  .sap-personality .desc {
+    font-size: 0.95rem;
+  }
+}

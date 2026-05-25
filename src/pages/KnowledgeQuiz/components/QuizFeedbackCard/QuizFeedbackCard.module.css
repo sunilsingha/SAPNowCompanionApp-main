@@ -1,0 +1,87 @@
+.wrap {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.mainCard > div:nth-of-type(2) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+}
+.title {
+  color: var(--sap-brand-blue-6);
+  font-size: var(--ion-font-size-heading-2);
+  font-weight: 700;
+}
+.points {
+  margin-top: 2rem;
+  color: var(--sap-brand-blue-10);
+  font-size: 4rem;
+  font-weight: 700;
+}
+.pointsText {
+  margin-top: 2rem;
+  color: var(--sap-brand-blue-10);
+  font-size: var(--ion-font-size-heading-2);
+  font-weight: 400;
+}
+.resultsProfile {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  > span:nth-of-type(1) {
+    font-size: var(--ion-font-size-primary-heading-1);
+    color: var(--sap-brand-blue-10);
+    font-weight: 500;
+    line-height: 130%;
+  }
+  > span:nth-of-type(2) {
+    font-size: var(--ion-font-size-heading-3);
+    color: var(--sap-brand-blue-10);
+    font-weight: 350;
+    line-height: 130%;
+  }
+}
+.card {
+  background: linear-gradient(82deg, var(--sap-brand-blue-8) 0%, #1cccb7 95.17%);
+  color: var(--sap-brand-white);
+  border-radius: 3rem;
+  padding: 3rem;
+
+  > div:nth-of-type(1) {
+    font-size: var(--ion-font-size-heading-4);
+    font-weight: 700;
+    padding-bottom: var(--ion-spacing-large);
+    line-height: 130%;
+  }
+  > div:nth-of-type(2) {
+    font-size: var(--ion-font-size-heading-4);
+    font-weight: 350;
+    line-height: 130%;
+  }
+}
+.action {
+  padding: 3rem 0;
+  > div:nth-of-type(1) {
+    padding-right: 3.5rem;
+  }
+}
+.disclaimer {
+  font-size: var(--ion-font-size-heading-6);
+  font-weight: 400;
+  line-height: 130%;
+}
+.text {
+  color: var(--sap--brand-blue-10);
+  font-size: var(--ion-font-size-heading-3);
+  font-weight: 350;
+}
+
+.svgWrap {
+  border: 1.25rem solid var(--sap-brand-white);
+  border-radius: 1rem;
+  background-color: var(--sap-brand-white);
+  box-shadow: var(--sap-brand-shadow-level-l);
+  align-self: center;
+}

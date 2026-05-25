@@ -1,0 +1,167 @@
+.wrap {
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Header */
+.header {
+  font-size: 2rem;
+  font-weight: 350;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.bottomFooter {
+  font-size: 1.5rem;
+  font-weight: 350;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+
+  margin: 3.5rem 3.5rem 3.5rem;
+}
+
+.mapPageContainer {
+  width: 100%;
+  padding: 2rem 1rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.cardWrapper {
+  overflow: hidden;
+  width: 100%;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.introBox {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  max-width: 300px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.introHeading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.introText {
+  font-size: 1.5rem;
+  color: #f3f4f6;
+  line-height: 1.5;
+}
+
+.stationsList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 350px; /* container width limit for large screens */
+  margin-top: 1rem;
+}
+
+.stationCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stationInfo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.stationNumber {
+  font-weight: bold;
+}
+
+.buttonContainer {
+  width: 100%;
+}
+
+.stationActionBtn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+.spacer {
+  height: 20px;
+}
+
+.mapImage {
+  width: 85%;
+  height: auto;
+  max-width: 600px; /* optional max-width for large screens */
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .stationActionBtn {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stationsList {
+    max-width: 100%;
+  }
+
+  .stationActionBtn {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+}
+
+.welcomeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100vw;
+  position: relative;
+}
+
+.welcomeHeader {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--sap-brand-blue-8);
+  text-align: center;
+  margin: 0;
+  padding: 1rem;
+}
+
+.qrCodeWrapper {
+  margin-top: 4rem;
+}
+

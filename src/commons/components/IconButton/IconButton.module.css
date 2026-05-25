@@ -1,0 +1,43 @@
+.wrap {
+  display: grid;
+  place-items: center;
+  position: relative;
+  border-radius: 2rem;
+}
+
+.buttonBorder,
+.buttonContent {
+  border-radius: 4rem;
+  width: 25.25rem;
+  height: 16rem;
+}
+.buttonBorder {
+  position: absolute;
+  border: 1px solid var(--sap-brand-white);
+  transform: translate(-1.5rem, 2rem);
+  background: transparent;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.buttonContent {
+  background: var(--sap-brand-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  padding: 2rem 2.5rem;
+  gap: var(--ion-spacing-xx-large);
+}
+.icon {
+  --libella-icon-color: var(--sap-brand-blue-10);
+  --libella-icon-size: var(--ion-font-size-heading-1);
+}
+.label {
+  font-size: var(--ion-font-size-heading-3);
+  color: var(--sap-brand-blue-10);
+  font-weight: 400;
+
+  line-height: normal;
+}

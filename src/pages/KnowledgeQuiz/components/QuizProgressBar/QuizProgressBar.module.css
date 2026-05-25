@@ -1,0 +1,21 @@
+.wrap {
+  height: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 0.75rem;
+  padding: 0 8.5rem;
+  & > div {
+    height: 100%;
+    flex-grow: 1;
+    border-radius: var(--ion-border-radius);
+  }
+}
+
+.bar {
+  background-color: var(--sap-brand-grey-2);
+  &[data-is-filled='true'] {
+    background-color: var(--sap-brand-blue-7);
+    transition: background 0.5s ease-in-out;
+  }
+}

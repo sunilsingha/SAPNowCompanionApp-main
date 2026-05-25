@@ -1,0 +1,8 @@
+applications:
+  - name: companiondelhi-app-ui
+    memory: 64M
+    path: dist
+    buildpacks:
+      - staticfile_buildpack
+    env:
+      VITE_BACKEND_URL: https://sap-nowmumbai-backend-dev.cfapps.in30.hana.ondemand.com

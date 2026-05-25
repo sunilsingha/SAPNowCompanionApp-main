@@ -1,0 +1,81 @@
+html,
+body {
+  overscroll-behavior: none;
+  font-size: clamp(4px, 2vw, 16px);
+}
+
+body {
+  font-family: var(--ion-font-family);
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  color: var(--ion-primary-font);
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+#root {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+}
+
+input,
+textarea {
+  font-family: var(--ion-font-family);
+}
+
+p,
+ol,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-transform: none;
+  appearance: button;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+
+  &::-moz-focus-inner {
+    border: none;
+  }
+}
+
+li:focus,
+div:focus {
+  outline: none;
+}
+
+[data-fake-link] {
+  color: var(--sap-brand-link);
+  cursor: pointer;
+}

@@ -1,0 +1,250 @@
+.panel {
+  line-height: 130%;
+  &[data-is-quiz='false'] > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & > span {
+      line-height: 130%;
+    }
+  }
+  &[data-is-quiz='false'] > div:nth-of-type(2) {
+    gap: 3.5rem;
+  }
+  
+}
+
+/* Header */
+.header {
+  font-size: 2rem;
+  font-weight: 350;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.locked {
+  color: var(--sap-brand-blue-10);
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 130%;
+}
+
+.lockedcontainer {
+  margin-top: 5vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.factCard > div:nth-of-type(2) {
+  min-height: 57.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  /* max-height: 80vh; */
+}
+.titleSmall {
+  font-size: var(--ion-font-size-heading-2);
+  font-weight: 500;
+  line-height: 130%;
+}
+
+.subtitle {
+  font-size: var(--ion-font-size-heading-2);
+  font-weight: 350;
+  padding-bottom: 3rem;
+  line-height: 130%;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+
+  margin: 0rem 3.5rem 6rem 3.5rem;
+}
+
+.bottomFooter{
+  font-size: 1.5rem;
+  font-weight: 350;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.title div:nth-of-type(1) {
+  color: var(--sap-brand-blue-6);
+  font-size: var(--ion-font-size-primary-heading-1);
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 130%;
+}
+.title div:nth-of-type(2) {
+  color: var(--sap-brand-blue-10);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 130%;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.cancelCard {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.transitionScreen {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+  padding: 0 1rem 6rem;
+  overflow-y: auto;
+}
+
+.transitionCard {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
+  background: white;
+  border-radius: 3rem;
+  padding: 2rem 1.5rem;
+  color: var(--sap-brand-blue-10);
+  box-sizing: border-box;
+}
+
+.introWrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ion-spacing-x-small);
+}
+
+.transitionContent {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.25rem;
+  width: 100%;
+  text-align: center;
+}
+
+.transitionContent p {
+  width: 100%;
+  margin: 0;
+  line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.transitionThanks {
+  color: var(--sap-brand-blue-6);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.4;
+  padding-bottom: 0.25rem;
+}
+
+.transitionPersonality {
+  color: var(--sap-brand-blue-10);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.transitionPersonality strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.transitionPersonalityDesc {
+  color: var(--sap-brand-blue-10);
+  font-size: 1rem;
+  font-weight: 350;
+  line-height: 1.5;
+  font-style: italic;
+  padding: 0 0.5rem;
+}
+
+.transitionSubtext {
+  color: var(--sap-brand-blue-10);
+  font-size: 1rem;
+  font-weight: 350;
+  line-height: 1.5;
+  padding-top: 0.25rem;
+}
+
+.transitionStatus {
+  color: var(--sap-brand-blue-6);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.transitionError {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  color: var(--sap-brand-blue-10);
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0.75rem 0;
+}
+
+.transitionActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.timerLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--sap-brand-blue-10);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.timerValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--sap-brand-blue-6);
+}
+
+.timerUrgent {
+  color: #e9730c;
+}
+
+.scoreLabel {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 500;
+}

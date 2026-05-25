@@ -1,0 +1,133 @@
+.panel {
+  line-height: 130%;
+  &[data-is-quiz='false'] > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & > span {
+      line-height: 130%;
+    }
+  }
+  &[data-is-quiz='false'] > div:nth-of-type(2) {
+    gap: 3.5rem;
+  }
+  
+}
+
+/* Header */
+.header {
+  font-size: 2rem;
+  font-weight: 350;
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.bottomFooter{
+  font-size: 1.5rem;
+  font-weight: 350;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.factCard > div:nth-of-type(2) {
+  min-height: 57.5rem;
+}
+
+.camera {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2vh;
+
+  & video,
+  img {
+    border-radius: 3rem;
+    width: 100%;
+    max-width: 40vh; 
+    height: auto;
+    object-fit: cover;
+  }
+}
+.loading {
+  height: 40vh;
+  position: relative;
+}
+
+.overlaySpinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  --libella-spinner-color: var(--sap-brand---ion-black);
+  & span {
+    font-size: var(--ion-font-size-heading-1);
+    color: var(--ion-grey-dark);
+    font-weight: 700;
+    margin-top: 1rem;
+  }
+}
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  /* max-height: 80vh; */
+}
+.titleSmall {
+  font-size: var(--ion-font-size-heading-2);
+  font-weight: 500;
+  line-height: 130%;
+}
+
+.subtitle {
+  font-size: var(--ion-font-size-heading-2);
+  font-weight: 350;
+  padding-bottom: 3rem;
+  line-height: 130%;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+
+  margin: 3.5rem 3.5rem 3.5rem;
+}
+
+.title div:nth-of-type(1) {
+  color: var(--sap-brand-blue-6);
+  font-size: var(--ion-font-size-primary-heading-1);
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 130%;
+}
+.title div:nth-of-type(2) {
+  color: var(--sap-brand-blue-10);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 130%;
+  text-align: center;
+  margin-top: 2vh;
+}
+
+.cancelCard {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.introWrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ion-spacing-x-small);
+}

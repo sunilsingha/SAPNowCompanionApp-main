@@ -1,0 +1,64 @@
+.container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.backgroundVideo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  color: var(--sap-brand-white);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  &[data-is-light='true'] {
+    background-image: linear-gradient(180deg, #142d78 0%, #6390cc66 40%, #142d78 100%);
+  }
+  &[data-is-light='false'] {
+    background-image:
+      linear-gradient(0deg, #00000066 0%, #00000066 100%),
+      linear-gradient(180deg, #142d78 0%, #6390cc66 40%, #142d78 100%);
+  }
+}
+.wrap > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bottomFooter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: 350;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #fff;
+  z-index: 10;
+}

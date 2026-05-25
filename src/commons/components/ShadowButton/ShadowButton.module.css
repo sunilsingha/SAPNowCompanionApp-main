@@ -1,0 +1,80 @@
+.wrap {
+  display: inline-grid;
+  position: relative;
+  place-items: center;
+  font-weight: 500;
+}
+
+.buttonBorder,
+.buttonContent {
+  grid-area: 1 / 1;
+  border-radius: 3rem;
+  box-sizing: border-box;
+}
+
+.buttonBorder {
+  z-index: 1;
+  transform: translate(-0.5rem, 0.75rem);
+  border: 1px solid var(--sap-brand-blue-7);
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  &[data-is-design='normal'] {
+    border: 1px solid var(--sap-brand-blue-4);
+  }
+  &[data-is-design='selected'] {
+    border: 1px solid var(--sap-brand-blue-7);
+  }
+  &[data-is-design='error'] {
+    border: 1px solid var(--sap-brand-red-7);
+  }
+  &[data-is-design='success'] {
+    border: 1px solid var(--sap-brand-green-7);
+  }
+}
+
+.buttonContent {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 2.5rem;
+  gap: var(--ion-spacing-xx-large);
+  font-size: var(--ion-font-size-heading-4);
+  --libella-icon-size: var(--ion-font-size-heading-4);
+  z-index: 1;
+
+  &[data-is-design='normal'] {
+    background-color: var(--sap-brand-blue-1);
+    color: var(--sap-brand-blue-8);
+    --libella-icon-color: var(--sap-brand-blue-8);
+  }
+
+  &[data-is-design='selected'] {
+    background-color: var(--sap-brand-blue-7);
+    color: var(--sap-brand-white);
+    --libella-icon-color: var(--sap-brand-white);
+  }
+
+  &[data-is-design='error'] {
+    background-color: var(--sap-brand-red-1);
+    color: var(--sap-brand-red-8);
+    --libella-icon-color: var(--sap-brand-red-8);
+  }
+
+  &[data-is-design='success'] {
+    background-color: var(--sap-brand-green-1);
+    color: var(--sap-brand-green-8);
+    --libella-icon-color: var(--sap-brand-green-8);
+  }
+}
+
+.iconLeft {
+  margin-right: 0.75rem;
+}
+
+.iconRight {
+  margin-left: 0.75rem;
+}
