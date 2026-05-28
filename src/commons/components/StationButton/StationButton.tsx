@@ -12,6 +12,7 @@ export interface StationButtonProps {
   setCurrentStationSelected: React.Dispatch<React.SetStateAction<string>>;
   setIsQrCodeOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isHighlighted?: boolean;
+  disabled?: boolean;
   /** When set, a locked station uses this instead of opening the QR scanner (e.g. direct unlock + navigate). */
   onLockedClick?: (userId: string | undefined) => void | Promise<void>;
 }
@@ -25,10 +26,12 @@ export const StationButton = ({
   setCurrentStationSelected,
   setIsQrCodeOpen,
   isHighlighted = false,
+  disabled = false,
   onLockedClick,
 }: StationButtonProps) => {
   const navigate = useNavigate();
   const handleClick = () => {
+    if (disabled) return;
     if (unlocked) {
       navigate(`/${route}/${userId}`);
     } else if (onLockedClick) {
@@ -57,7 +60,9 @@ export const StationButton = ({
           className={`${classes.stationActionBtn} ${
             isHighlighted ? classes.highlighted : ""
           }`}
+          disabled={disabled}
           onClick={() => {
+            if (disabled) return;
             setCurrentStationSelected(stationNumber);
             handleClick();
           }}

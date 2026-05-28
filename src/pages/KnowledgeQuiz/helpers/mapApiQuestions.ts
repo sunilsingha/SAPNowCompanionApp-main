@@ -124,7 +124,7 @@ export const mapApiQuestionToFastestFinger = (
 
 export const mapApiQuestionsResponse = (
   data: unknown,
-  expectedCount = 5
+  expectedCount = 3
 ): FastestFingerQuestion[] => {
   const payload = data as {
     questions?: ApiQuestion[];

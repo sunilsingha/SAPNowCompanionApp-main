@@ -35,11 +35,13 @@ export const Map = () => {
     isCheckStationStatusLoading,
     isStationOneDone,
     isStationTwoDone,
+    personality,
   } = useCheckUser(userid);
   const [currentStationSelected, setCurrentStationSelected] =
     useState<string>("");
   const { unlockStation } = useUnlockStation();
   const navigate = useNavigate();
+  const isPersonalityQuizCompleted = Boolean(personality);
 
   useEffect(() => {
     console.log("Scanned Value:", badgeScanInput);
@@ -51,13 +53,18 @@ export const Map = () => {
       unlockStation(userid, 2);
       navigate(`/${Routes.Quiz}/${userid}`);
     } else if (currentStationSelected == "3" && badgeScanInput == "3") {
+      if (!isPersonalityQuizCompleted) {
+        setQrError(true);
+        setBadgeScanInput("");
+        return;
+      }
       unlockStation(userid, 3);
       navigate(`/${Routes.SocialCard}/${userid}`);
     } else {
       setQrError(true);
     }
     setBadgeScanInput("");
-  }, [badgeScanInput]);
+  }, [badgeScanInput, currentStationSelected, isPersonalityQuizCompleted, navigate, unlockStation, userid]);
 
   useEffect(() => {
     if (qrError) {
@@ -188,13 +195,14 @@ export const Map = () => {
               userId={userid}
               stationNumber={"3"}
               unlocked={true}
+              disabled={!isPersonalityQuizCompleted}
               text={"Social Card"}
               route={Routes.SocialCard}
-              isHighlighted={highlightedStation === "3"}
+              isHighlighted={highlightedStation === "3" && isPersonalityQuizCompleted}
               setIsQrCodeOpen={setIsQrCodeOpen}
               setCurrentStationSelected={setCurrentStationSelected}
               onLockedClick={async (uid) => {
-                if (!uid) return;
+                if (!uid || !isPersonalityQuizCompleted) return;
                 await unlockStation(uid, 3);
                 navigate(`/${Routes.SocialCard}/${uid}`);
               }}

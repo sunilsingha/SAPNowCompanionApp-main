@@ -38,6 +38,7 @@ import {
   FASTEST_FINGER_MAX_TIME_MS,
   FASTEST_FINGER_MAX_TIME_SEC,
   FASTEST_FINGER_POINTS_PER_CORRECT,
+  FASTEST_FINGER_QUESTION_COUNT,
 } from "./helpers/quizApi";
 import { FastestFingerQuestion } from "./helpers/mapApiQuestions";
 import { useQuizTimer } from "./hooks/useQuizTimer";
@@ -196,7 +197,9 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
   const title = "Which SAP Product am I?\n Personality Quiz".split("\n");
 
   const loadQuestionsForFastestFinger = useCallback(async () => {
-    const questions = await fetchFastestFingerQuestions(5);
+    const questions = await fetchFastestFingerQuestions(
+      FASTEST_FINGER_QUESTION_COUNT
+    );
     return questions;
   }, []);
 
@@ -472,7 +475,8 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
                 {personalityResult.description}
               </p>
               <p className={classes.transitionSubtext}>
-                Get ready for Fastest Finger — 5 questions, 10 seconds each!
+                Get ready for Fastest Finger — {FASTEST_FINGER_QUESTION_COUNT}{" "}
+                questions, 10 seconds each!
               </p>
               <div className={classes.transitionActions}>
                 <ShadowButton
