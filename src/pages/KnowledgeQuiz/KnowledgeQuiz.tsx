@@ -185,6 +185,7 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
 
   const [isStartingFastestFinger, setIsStartingFastestFinger] = useState(false);
   const [personalitySaving, setPersonalitySaving] = useState(false);
+  const [showCompletionAlert, setShowCompletionAlert] = useState(false);
 
   const personalitySavedRef = useRef(false);
   const ffLockedRef = useRef(false);
@@ -307,6 +308,7 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
       }
 
       clearCachedFastestFingerQuestions();
+      setShowCompletionAlert(true);
       setPhase("finalResults");
     },
     [userid, completeStation]
@@ -362,6 +364,7 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
             );
           } catch (err) {
             console.error("Failed to finalize fastest finger quiz:", err);
+            setShowCompletionAlert(true);
             setPhase("finalResults");
           }
         } else {
@@ -445,6 +448,30 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
           />
         </motion.div>
         <BackToMapButton />
+        {showCompletionAlert && (
+          <div className={classes.completionOverlay}>
+            <div className={classes.completionAlert}>
+              <p className={classes.transitionThanks}>
+                Thank you for completing the quiz!
+              </p>
+              <p className={classes.completionAlertText}>
+                Share your social card on linkedin to earn additional points.
+                
+              </p>
+              <p className={classes.completionAlertText}>
+                
+                The Top 3 winners will receive exciting prizes. Check the
+                leaderboard at the end of the show.
+              </p>
+              <ShadowButton
+                design="selected"
+                onClick={() => setShowCompletionAlert(false)}
+              >
+                OK
+              </ShadowButton>
+            </div>
+          </div>
+        )}
       </BackgroundWrapper>
     );
   }

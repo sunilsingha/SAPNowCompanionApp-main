@@ -48,7 +48,7 @@ export const BackgroundWrapper = ({
       <div className={classes.wrap} data-is-light={lightDesign}>
         <div>{children}</div>
           <h1 className={classes.bottomFooter}>
-            Powered by SAP Business Technology Platform.
+            Built with SAP Build - Joule Studio and Powered by SAP BTP.
           </h1>
         </div>
       </div>

@@ -248,3 +248,36 @@
   font-size: 1.25rem;
   font-weight: 500;
 }
+
+.completionOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.5rem;
+}
+
+.completionAlert {
+  background: white;
+  border-radius: 3rem;
+  padding: 2rem 1.5rem;
+  max-width: 36rem;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  color: var(--sap-brand-blue-10);
+  box-sizing: border-box;
+}
+
+.completionAlertText {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 350;
+  line-height: 1.5;
+}
