@@ -78,7 +78,7 @@ export function calculateDeductedScore(base: number, start: number, max: number,
 export const FASTEST_FINGER_MAX_TIME = 10;
 export const FASTEST_FINGER_DEDUCTION_START = 3;
 export const FASTEST_FINGER_MAX_PER_QUESTION = 600;
-export const FASTEST_FINGER_QUESTION_COUNT = 3;
+export const FASTEST_FINGER_QUESTION_COUNT = 5;
 
 export const calculateFastestFingerScore = (
   isCorrect: boolean,

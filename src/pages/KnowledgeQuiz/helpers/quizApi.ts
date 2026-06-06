@@ -22,7 +22,7 @@ export const savePersonality = async (
   }
 };
 
-export const FASTEST_FINGER_QUESTION_COUNT = 3;
+export const FASTEST_FINGER_QUESTION_COUNT = 5;
 export const FASTEST_FINGER_POINTS_PER_CORRECT = 10;
 export const FASTEST_FINGER_MAX_TIME_SEC = 10;
 export const FASTEST_FINGER_MAX_TIME_MS = FASTEST_FINGER_MAX_TIME_SEC * 1000;
