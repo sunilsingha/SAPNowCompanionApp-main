@@ -1,38 +1,40 @@
 .panel {
   line-height: 130%;
-  &[data-is-quiz='false'] > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    & > span {
-      line-height: 130%;
-    }
-  }
-  &[data-is-quiz='false'] > div:nth-of-type(2) {
-    gap: 3.5rem;
-  }
-  
 }
 
-/* Header */
+.panel[data-is-quiz='false'] > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.panel[data-is-quiz='false'] > div > span {
+  line-height: 130%;
+}
+
+.panel[data-is-quiz='false'] > div:nth-of-type(2) {
+  gap: 1.5rem;
+}
+
 .header {
-  font-size: 2rem;
+  font-size: clamp(1.125rem, 4vw, 1.75rem);
   font-weight: 350;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   text-align: center;
   color: #fff;
+  padding: 0 1rem;
 }
 
 .locked {
-  color: var(--sap-brand-blue-10);
+  color: var(--sap-brand-blue-10, #1a3e8a);
   font-weight: 700;
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
   line-height: 130%;
 }
 
 .lockedcontainer {
-  margin-top: 5vh;
+  margin-top: 2rem;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -45,58 +47,58 @@
   flex-direction: column;
   justify-content: center;
 }
+
 .factCard > div:nth-of-type(2) {
-  min-height: 57.5rem;
+  min-height: auto;
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  /* max-height: 80vh; */
 }
+
 .titleSmall {
-  font-size: var(--ion-font-size-heading-2);
+  font-size: 1.125rem;
   font-weight: 500;
   line-height: 130%;
 }
 
 .subtitle {
-  font-size: var(--ion-font-size-heading-2);
+  font-size: 1.125rem;
   font-weight: 350;
-  padding-bottom: 3rem;
+  padding-bottom: 1.5rem;
   line-height: 130%;
 }
 
 .footer {
   display: flex;
   justify-content: center;
-
-  margin: 0rem 3.5rem 6rem 3.5rem;
+  margin: 0 1rem 2rem;
 }
 
-.bottomFooter{
-  font-size: 1.5rem;
+.bottomFooter {
+  font-size: 1rem;
   font-weight: 350;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   text-align: center;
   color: #fff;
 }
 
-.title div:nth-of-type(1) {
-  color: var(--sap-brand-blue-6);
-  font-size: var(--ion-font-size-primary-heading-1);
+.title > div:first-of-type {
+  color: var(--sap-brand-blue-6, #4db1ff);
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
   font-weight: 700;
-  font-size: 4rem;
   line-height: 130%;
 }
-.title div:nth-of-type(2) {
-  color: var(--sap-brand-blue-10);
-  font-size: 2.5rem;
+
+.title > div:nth-of-type(2) {
+  color: var(--sap-brand-blue-10, #1a3e8a);
+  font-size: clamp(1.125rem, 4vw, 1.5rem);
   font-weight: 700;
   line-height: 130%;
   text-align: center;
-  margin-top: 4rem;
+  margin-top: 0.75rem;
 }
 
 .cancelCard {
@@ -111,7 +113,7 @@
   align-items: center;
   width: 100%;
   min-height: 0;
-  padding: 0 1rem 6rem;
+  padding: 0 1rem 4rem;
   overflow-y: auto;
 }
 
@@ -121,23 +123,23 @@
   max-width: 42rem;
   margin: 0 auto;
   background: white;
-  border-radius: 3rem;
-  padding: 2rem 1.5rem;
-  color: var(--sap-brand-blue-10);
+  border-radius: 2rem;
+  padding: 1.5rem 1.25rem;
+  color: var(--sap-brand-blue-10, #1a3e8a);
   box-sizing: border-box;
 }
 
 .introWrap {
   display: flex;
   flex-direction: column;
-  gap: var(--ion-spacing-x-small);
+  gap: 0.75rem;
 }
 
 .transitionContent {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 1.25rem;
+  gap: 1rem;
   width: 100%;
   text-align: center;
 }
@@ -151,16 +153,16 @@
 }
 
 .transitionThanks {
-  color: var(--sap-brand-blue-6);
-  font-size: 1.5rem;
+  color: var(--sap-brand-blue-6, #4db1ff);
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.4;
   padding-bottom: 0.25rem;
 }
 
 .transitionPersonality {
-  color: var(--sap-brand-blue-10);
-  font-size: 1.125rem;
+  color: var(--sap-brand-blue-10, #1a3e8a);
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
 }
@@ -168,14 +170,14 @@
 .transitionPersonality strong {
   display: block;
   margin-top: 0.35rem;
-  font-size: 1.35rem;
+  font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.4;
 }
 
 .transitionPersonalityDesc {
-  color: var(--sap-brand-blue-10);
-  font-size: 1rem;
+  color: var(--sap-brand-blue-10, #1a3e8a);
+  font-size: 0.95rem;
   font-weight: 350;
   line-height: 1.5;
   font-style: italic;
@@ -183,16 +185,16 @@
 }
 
 .transitionSubtext {
-  color: var(--sap-brand-blue-10);
-  font-size: 1rem;
+  color: var(--sap-brand-blue-10, #1a3e8a);
+  font-size: 0.95rem;
   font-weight: 350;
   line-height: 1.5;
   padding-top: 0.25rem;
 }
 
 .transitionStatus {
-  color: var(--sap-brand-blue-6);
-  font-size: 1rem;
+  color: var(--sap-brand-blue-6, #4db1ff);
+  font-size: 0.95rem;
   line-height: 1.5;
 }
 
@@ -200,10 +202,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   width: 100%;
-  color: var(--sap-brand-blue-10);
-  font-size: 1rem;
+  color: var(--sap-brand-blue-10, #1a3e8a);
+  font-size: 0.95rem;
   line-height: 1.5;
   padding: 0.75rem 0;
 }
@@ -212,7 +214,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   width: 100%;
   margin-top: 0.5rem;
 }
@@ -222,21 +224,21 @@
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .timerLabel {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  color: var(--sap-brand-blue-10);
+  color: var(--sap-brand-blue-10, #1a3e8a);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .timerValue {
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 6vw, 2rem);
   font-weight: 700;
-  color: var(--sap-brand-blue-6);
+  color: var(--sap-brand-blue-6, #4db1ff);
 }
 
 .timerUrgent {
@@ -245,7 +247,7 @@
 
 .scoreLabel {
   color: #fff;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
@@ -257,27 +259,44 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .completionAlert {
   background: white;
-  border-radius: 3rem;
-  padding: 2rem 1.5rem;
+  border-radius: 2rem;
+  padding: 1.5rem 1.25rem;
   max-width: 36rem;
   width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
-  color: var(--sap-brand-blue-10);
+  gap: 1rem;
+  color: var(--sap-brand-blue-10, #1a3e8a);
   box-sizing: border-box;
 }
 
 .completionAlertText {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 350;
   line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .header {
+    font-size: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer {
+    margin: 0 3.5rem 6rem;
+  }
+
+  .transitionCard {
+    border-radius: 3rem;
+    padding: 2rem 1.5rem;
+  }
 }

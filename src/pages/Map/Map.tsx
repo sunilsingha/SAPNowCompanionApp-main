@@ -1,6 +1,5 @@
 import { LoadingOverlay } from "@abdc/messer";
 import { useNavigate, useParams, To } from "react-router-dom";
-import { BACKGROUND_IMAGE_SRC, getLearningMediaKey } from "../utils";
 import { Routes } from "../../routing/Routes";
 import { useUnlockStation } from "../../hooks/useUnlockStation";
 import { useCheckUser } from "../../hooks/useCheckUser";
@@ -99,10 +98,7 @@ export const Map = () => {
 
   if (isQrCodeOpen && !badgeScanInput) {
     return (
-      <BackgroundWrapper
-        imageSrc={getLearningMediaKey(BACKGROUND_IMAGE_SRC)}
-        className={classes.wrap}
-      >
+      <BackgroundWrapper className={classes.wrap}>
         <Header></Header>
         <div className={classes.qrCodeWrapper}>
           <BarcodeScannerComponent
@@ -147,10 +143,7 @@ export const Map = () => {
   }
 
   return (
-    <BackgroundWrapper
-      imageSrc={getLearningMediaKey(BACKGROUND_IMAGE_SRC)}
-      className={classes.wrap}
-    >
+    <BackgroundWrapper className={classes.wrap}>
       <Header></Header>
       <div
         style={{

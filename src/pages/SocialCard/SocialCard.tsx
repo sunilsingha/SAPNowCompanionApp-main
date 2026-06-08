@@ -13,8 +13,7 @@ import { BackToMapButton } from "../../commons/components/BackToMapButton";
 import { Button } from "../../commons/components/Button";
 import { Card } from "../../commons/components/Card";
 
-import { BACKGROUND_IMAGE_SRC, getLearningMediaKey } from "../../commons/utils";
-
+import { getApiUrl } from "../../commons/utils";
 import "./SocialCard.css";
 
 interface CardProps {
@@ -40,8 +39,6 @@ export const SocialCard = () => {
   const [cardReady, setCardReady] = useState(false);
 
   
-  const backgroundImageSrc = getLearningMediaKey(BACKGROUND_IMAGE_SRC);
-
   const cardRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -130,18 +127,29 @@ export const SocialCard = () => {
       let portraitUrl = profileImag || samplePortrait;
       try {
         if (profileImag) {
-          const avatarRes = await fetch(
-            `https://sap-nowmumbai-backend-dev.cfapps.in30.hana.ondemand.com/api/avatar/download/${encodeURIComponent(profileImag)}`
-          );
+          const path = `/api/avatar/download/${encodeURIComponent(profileImag)}`
+          const urls = [getApiUrl(path)]
+          const backend = import.meta.env.VITE_BACKEND_URL
+          if (backend) urls.push(`${backend}${path}`)
 
-          if (avatarRes.ok) {
-            const blob = await avatarRes.blob();
+          for (const url of urls) {
+            const avatarRes = await fetch(url)
+            if (!avatarRes.ok) continue
+
+            const rawBlob = await avatarRes.blob()
+            if (!rawBlob.size) continue
+
+            const blob =
+              rawBlob.type && rawBlob.type.startsWith("image/")
+                ? rawBlob
+                : new Blob([rawBlob], { type: "image/jpeg" })
             portraitUrl = await new Promise<string>((resolve, reject) => {
-              const reader = new FileReader();
-              reader.onloadend = () => resolve(reader.result as string);
-              reader.onerror = reject;
-              reader.readAsDataURL(blob);
-            });
+              const reader = new FileReader()
+              reader.onloadend = () => resolve(reader.result as string)
+              reader.onerror = reject
+              reader.readAsDataURL(blob)
+            })
+            break
           }
         }
       } catch {
@@ -214,7 +222,7 @@ export const SocialCard = () => {
   };
 
   return (
-    <BackgroundWrapper imageSrc={backgroundImageSrc}>
+    <BackgroundWrapper>
       <Header />
       <div className="card-wrapper">
         <h1 className="header">

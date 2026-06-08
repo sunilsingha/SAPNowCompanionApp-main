@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { User } from "../commons/types/User";
-import { getBaseUrl } from "../commons/utils";
+import { getApiUrl } from "../commons/utils";
 import { isQuizCompleted } from "../pages/KnowledgeQuiz/helpers/quizApi";
 
 export function useCheckUser(userId: string | undefined) {
@@ -25,7 +25,7 @@ export function useCheckUser(userId: string | undefined) {
       setIsCheckStationStatusLoading(true);
       await new Promise(resolve => setTimeout(resolve, 1000));
       try {
-        const res = await fetch(`${getBaseUrl()}/api/user/${userId}`, {
+        const res = await fetch(getApiUrl(`/api/user/${userId}`), {
           method: "GET",
         });
         const data = await res.json();

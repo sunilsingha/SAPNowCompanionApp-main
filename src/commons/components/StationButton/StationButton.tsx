@@ -43,12 +43,6 @@ export const StationButton = ({
 
   return (
     <div className={classes.stationCard}>
-      <div className={classes.stationInfo}>
-        <span className={classes.stationCard}>Station {stationNumber}</span>
-        <span className={`station-status ${unlocked ? "unlocked" : "locked"}`}>
-          {unlocked ? " " : "🔒"}
-        </span>
-      </div>
       <div
         style={{
           display: "flex",
@@ -57,6 +51,7 @@ export const StationButton = ({
         }}
       >
         <Button
+          design="white"
           className={`${classes.stationActionBtn} ${
             isHighlighted ? classes.highlighted : ""
           }`}

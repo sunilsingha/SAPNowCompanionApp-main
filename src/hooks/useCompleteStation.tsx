@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getBaseUrl } from "../commons/utils";
+import { getApiUrl } from "../commons/utils";
 
 export function useCompleteStation() {
 
@@ -9,7 +9,7 @@ export function useCompleteStation() {
   const completeStation = async (userId: string | undefined, stationId: number) => {
     setIsCompleteStationLoading(true);
     try {
-      await fetch(`${getBaseUrl()}/api/user/${userId}/${stationId}/complete`, {
+      await fetch(getApiUrl(`/api/user/${userId}/${stationId}/complete`), {
           method: 'PUT',
         });
     } catch (error: any) {

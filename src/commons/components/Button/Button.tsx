@@ -25,6 +25,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
+      type="button"
       className={clsx(className, classes.wrap)}
       data-design={design}
       disabled={disabled}

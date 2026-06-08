@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getBaseUrl } from "../commons/utils";
+import { getApiUrl } from "../commons/utils";
 
 export function useUnlockStation() {
 
@@ -10,7 +10,7 @@ export function useUnlockStation() {
     setIsUnlockStationLoading(true);
     console.log("userId ", userId);
     try {
-      await fetch(`${getBaseUrl()}/api/user/${userId}/${stationId}/unlock`, {
+      await fetch(getApiUrl(`/api/user/${userId}/${stationId}/unlock`), {
           method: 'PUT',
         });
     } catch (error: any) {

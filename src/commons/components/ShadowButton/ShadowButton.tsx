@@ -27,6 +27,7 @@ export const ShadowButton = ({
     <div className={clsx(className, classes.wrap)}>
       {/* <div className={classes.buttonBorder} data-is-design={design} /> */}
       <button
+        type="button"
         className={classes.buttonContent}
         data-is-design={design}
         disabled={disabled}

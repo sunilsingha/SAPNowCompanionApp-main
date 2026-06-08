@@ -122,28 +122,43 @@ export const mapApiQuestionToFastestFinger = (
   };
 };
 
+const extractRawQuestions = (data: unknown): ApiQuestion[] => {
+  if (Array.isArray(data)) return data as ApiQuestion[]
+
+  if (!data || typeof data !== 'object') return []
+
+  const payload = data as {
+    questions?: ApiQuestion[];
+    result?: ApiQuestion[];
+    data?: { questions?: ApiQuestion[] };
+  }
+
+  if (Array.isArray(payload.questions)) return payload.questions
+  if (Array.isArray(payload.result)) return payload.result
+  if (Array.isArray(payload.data?.questions)) return payload.data.questions
+
+  return []
+}
+
 export const mapApiQuestionsResponse = (
   data: unknown,
   expectedCount = 3
 ): FastestFingerQuestion[] => {
-  const payload = data as {
-    questions?: ApiQuestion[];
-    result?: ApiQuestion[];
-  };
-
-  const rawQuestions = Array.isArray(data)
-    ? data
-    : payload?.questions ?? payload?.result ?? [];
+  const rawQuestions = extractRawQuestions(data)
 
   const mapped = rawQuestions
     .map((q, i) => mapApiQuestionToFastestFinger(q, i))
     .filter((q): q is FastestFingerQuestion => q !== null);
 
-  if (mapped.length < expectedCount) {
-    throw new Error(
-      `Expected at least ${expectedCount} questions, received ${mapped.length}`
-    );
+  if (!mapped.length) {
+    throw new Error('No quiz questions could be parsed from the API response')
   }
 
-  return mapped.slice(0, expectedCount);
+  if (mapped.length < expectedCount) {
+    console.warn(
+      `Expected ${expectedCount} questions, received ${mapped.length}. Using available questions.`
+    )
+  }
+
+  return mapped.slice(0, Math.min(expectedCount, mapped.length));
 };

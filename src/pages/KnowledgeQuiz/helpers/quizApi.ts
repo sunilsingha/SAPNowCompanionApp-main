@@ -1,9 +1,10 @@
 import axios from "axios";
-import { getBaseUrl } from "../../../commons/utils";
+import { getApiUrl, getBackendUrl } from "../../../commons/utils";
 import {
   FastestFingerQuestion,
   mapApiQuestionsResponse,
 } from "./mapApiQuestions";
+import { FALLBACK_FASTEST_FINGER_QUESTIONS } from "./fallbackQuestions";
 
 const QUIZ_QUESTIONS_CACHE_KEY = "fastestFingerQuestions";
 
@@ -11,7 +12,7 @@ export const savePersonality = async (
   userId: string,
   personality: number
 ): Promise<void> => {
-  const response = await fetch(`${getBaseUrl()}/api/user/quiz`, {
+  const response = await fetch(getApiUrl("/api/user/quiz"), {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ user_id: userId, personality }),
@@ -40,7 +41,7 @@ export type FastestFingerAnswerPayload = {
 export const submitFastestFingerAnswer = async (
   payload: FastestFingerAnswerPayload
 ): Promise<void> => {
-  const response = await fetch(`${getBaseUrl()}/api/quiz/fastest-finger`, {
+  const response = await fetch(getApiUrl("/api/quiz/fastest-finger"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -61,7 +62,7 @@ export const updateQuizStats = async (
   userId: string,
   payload: QuizStatsPayload
 ): Promise<void> => {
-  const response = await fetch(`${getBaseUrl()}/api/user/${userId}/quiz-stats`, {
+  const response = await fetch(getApiUrl(`/api/user/${userId}/quiz-stats`), {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -84,7 +85,7 @@ export const fetchQuizResult = async (
   userId: string
 ): Promise<{ personality: number | null; score: number | null }> => {
   try {
-    const { data } = await axios.get(`${getBaseUrl()}/api/user/${userId}/quiz`, {
+    const { data } = await axios.get(getApiUrl(`/api/user/${userId}/quiz`), {
       headers: { Accept: "application/json" },
     });
     return {
@@ -96,25 +97,66 @@ export const fetchQuizResult = async (
   }
 };
 
+const requestQuestions = async (url: string): Promise<FastestFingerQuestion[]> => {
+  const response = await fetch(url)
+
+  if (!response.ok) {
+    const errorBody = await response.text()
+    throw new Error(`Failed to fetch questions: ${response.status} ${errorBody}`)
+  }
+
+  const data = await response.json()
+  return mapApiQuestionsResponse(data, FASTEST_FINGER_QUESTION_COUNT)
+}
+
 export const fetchFastestFingerQuestions = async (
   count = FASTEST_FINGER_QUESTION_COUNT
 ): Promise<FastestFingerQuestion[]> => {
-  const { data } = await axios.get(`${getBaseUrl()}/api/quiz/questions`, {
-    params: { count },
-    headers: { Accept: "application/json" },
-  });
+  const errors: string[] = []
 
-  const questions = mapApiQuestionsResponse(data, count);
-  sessionStorage.setItem(QUIZ_QUESTIONS_CACHE_KEY, JSON.stringify(questions));
-  return questions;
+  const attempts = [
+    getApiUrl(`/api/quiz/questions?count=${count}`),
+    getBackendUrl()
+      ? `${getBackendUrl()}/api/quiz/questions?count=${count}`
+      : null,
+  ].filter((url): url is string => Boolean(url))
+
+  for (const url of attempts) {
+    try {
+      const questions = await requestQuestions(url)
+
+      try {
+        sessionStorage.setItem(QUIZ_QUESTIONS_CACHE_KEY, JSON.stringify(questions))
+      } catch {
+        // sessionStorage may be unavailable in some mobile private browsing modes
+      }
+
+      return questions
+    } catch (err) {
+      errors.push(`${url}: ${err instanceof Error ? err.message : String(err)}`)
+    }
+  }
+
+  console.warn(
+    "All quiz question fetch attempts failed, using offline fallback:",
+    errors
+  )
+
+  const fallback = FALLBACK_FASTEST_FINGER_QUESTIONS.slice(0, count)
+  try {
+    sessionStorage.setItem(QUIZ_QUESTIONS_CACHE_KEY, JSON.stringify(fallback))
+  } catch {
+    // ignore
+  }
+  return fallback
 };
 
 export const getCachedFastestFingerQuestions = ():
   | FastestFingerQuestion[]
   | null => {
-  const cached = sessionStorage.getItem(QUIZ_QUESTIONS_CACHE_KEY);
-  if (!cached) return null;
   try {
+    const cached = sessionStorage.getItem(QUIZ_QUESTIONS_CACHE_KEY);
+    if (!cached) return null;
     return JSON.parse(cached) as FastestFingerQuestion[];
   } catch {
     return null;
@@ -122,5 +164,9 @@ export const getCachedFastestFingerQuestions = ():
 };
 
 export const clearCachedFastestFingerQuestions = (): void => {
-  sessionStorage.removeItem(QUIZ_QUESTIONS_CACHE_KEY);
+  try {
+    sessionStorage.removeItem(QUIZ_QUESTIONS_CACHE_KEY);
+  } catch {
+    // sessionStorage may be unavailable in some mobile private browsing modes
+  }
 };

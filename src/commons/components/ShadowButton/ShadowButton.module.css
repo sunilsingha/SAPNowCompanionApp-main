@@ -15,23 +15,27 @@
 .buttonBorder {
   z-index: 1;
   transform: translate(-0.5rem, 0.75rem);
-  border: 1px solid var(--sap-brand-blue-7);
+  border: 1px solid var(--sap-brand-blue-7, #0057d2);
   background: transparent;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  &[data-is-design='normal'] {
-    border: 1px solid var(--sap-brand-blue-4);
-  }
-  &[data-is-design='selected'] {
-    border: 1px solid var(--sap-brand-blue-7);
-  }
-  &[data-is-design='error'] {
-    border: 1px solid var(--sap-brand-red-7);
-  }
-  &[data-is-design='success'] {
-    border: 1px solid var(--sap-brand-green-7);
-  }
+}
+
+.buttonBorder[data-is-design='normal'] {
+  border: 1px solid var(--sap-brand-blue-4, #4db1ff);
+}
+
+.buttonBorder[data-is-design='selected'] {
+  border: 1px solid var(--sap-brand-blue-7, #0057d2);
+}
+
+.buttonBorder[data-is-design='error'] {
+  border: 1px solid var(--sap-brand-red-7, #e90b0b);
+}
+
+.buttonBorder[data-is-design='success'] {
+  border: 1px solid var(--sap-brand-green-7, #188918);
 }
 
 .buttonContent {
@@ -40,35 +44,35 @@
   flex-direction: row;
   align-items: center;
   text-align: center;
-  padding: 2rem 2.5rem;
-  gap: var(--ion-spacing-xx-large);
-  font-size: var(--ion-font-size-heading-4);
-  --libella-icon-size: var(--ion-font-size-heading-4);
+  padding: 0.875rem 1.25rem;
+  gap: var(--ion-spacing-xx-large, 1rem);
+  font-size: 1rem;
+  --libella-icon-size: var(--ion-font-size-heading-4, 1rem);
   z-index: 1;
+}
 
-  &[data-is-design='normal'] {
-    background-color: var(--sap-brand-blue-1);
-    color: var(--sap-brand-blue-8);
-    --libella-icon-color: var(--sap-brand-blue-8);
-  }
+.buttonContent[data-is-design='normal'] {
+  background-color: var(--sap-brand-blue-1, #e5f0fa);
+  color: var(--sap-brand-blue-8, #003366);
+  --libella-icon-color: var(--sap-brand-blue-8, #003366);
+}
 
-  &[data-is-design='selected'] {
-    background-color: var(--sap-brand-blue-7);
-    color: var(--sap-brand-white);
-    --libella-icon-color: var(--sap-brand-white);
-  }
+.buttonContent[data-is-design='selected'] {
+  background-color: var(--sap-brand-blue-7, #0057d2);
+  color: var(--sap-brand-white, #fff);
+  --libella-icon-color: var(--sap-brand-white, #fff);
+}
 
-  &[data-is-design='error'] {
-    background-color: var(--sap-brand-red-1);
-    color: var(--sap-brand-red-8);
-    --libella-icon-color: var(--sap-brand-red-8);
-  }
+.buttonContent[data-is-design='error'] {
+  background-color: var(--sap-brand-red-1, #ffeaf4);
+  color: var(--sap-brand-red-8, #840606);
+  --libella-icon-color: var(--sap-brand-red-8, #840606);
+}
 
-  &[data-is-design='success'] {
-    background-color: var(--sap-brand-green-1);
-    color: var(--sap-brand-green-8);
-    --libella-icon-color: var(--sap-brand-green-8);
-  }
+.buttonContent[data-is-design='success'] {
+  background-color: var(--sap-brand-green-1, #f5fae5);
+  color: var(--sap-brand-green-8, #256f3a);
+  --libella-icon-color: var(--sap-brand-green-8, #256f3a);
 }
 
 .iconLeft {
@@ -77,4 +81,12 @@
 
 .iconRight {
   margin-left: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .buttonContent {
+    padding: 2rem 2.5rem;
+    gap: var(--ion-spacing-xx-large, 1.5rem);
+    font-size: 1.125rem;
+  }
 }

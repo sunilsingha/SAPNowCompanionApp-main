@@ -13,9 +13,7 @@ import { Header } from "../../commons/components/Header";
 import { ShadowButton } from "../../commons/components/ShadowButton";
 
 import {
-  BACKGROUND_IMAGE_SRC,
   containerVariants,
-  getLearningMediaKey,
   wordVariants,
 } from "../../commons/utils";
 import { QuestionCard, Question } from "./components/QuestionCard";
@@ -184,6 +182,9 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
   const [runningScore, setRunningScore] = useState(0);
 
   const [isStartingFastestFinger, setIsStartingFastestFinger] = useState(false);
+  const [fastestFingerError, setFastestFingerError] = useState<string | null>(
+    null
+  );
   const [personalitySaving, setPersonalitySaving] = useState(false);
   const [showCompletionAlert, setShowCompletionAlert] = useState(false);
 
@@ -193,7 +194,6 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
   const totalScoreRef = useRef(0);
   const fastestTimeRef = useRef<number | null>(null);
 
-  const backgroundImageSrc = getLearningMediaKey(BACKGROUND_IMAGE_SRC);
   const currentQuestion = personalityQuestions[currentIndex];
   const title = "Which SAP Product am I?\n Personality Quiz".split("\n");
 
@@ -398,15 +398,19 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
       return;
     }
 
+    setFastestFingerError(null);
     setIsStartingFastestFinger(true);
     try {
       clearCachedFastestFingerQuestions();
       const questions = await loadQuestionsForFastestFinger();
       if (!questions.length) {
-        console.error("No fastest finger questions were returned.");
+        setFastestFingerError(
+          "Could not load quiz questions. Please try again."
+        );
         return;
       }
       setFastestFingerQuestions(questions);
+      setFastestFingerError(null);
       setFfIndex(0);
       setFfSelected("");
       setFfLocked(false);
@@ -417,6 +421,9 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
       setPhase("fastestFinger");
     } catch (err) {
       console.error("Failed to load fastest finger questions:", err);
+      setFastestFingerError(
+        "Could not load quiz questions. Please try again."
+      );
     } finally {
       setIsStartingFastestFinger(false);
     }
@@ -433,7 +440,7 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
 
   if (personalityResult && (phase === "finalResults" || quizCompleted)) {
     return (
-      <BackgroundWrapper imageSrc={backgroundImageSrc}>
+      <BackgroundWrapper>
         <Header />
         {divider}
         <h1 className={classes.header}>
@@ -478,7 +485,7 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
 
   if (phase === "personalityTransition" && personalityResult && !quizCompleted) {
     return (
-      <BackgroundWrapper imageSrc={backgroundImageSrc}>
+      <BackgroundWrapper>
         <Header />
         {divider}
         <div className={classes.transitionScreen}>
@@ -505,12 +512,15 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
                 Get ready for Fastest Finger — {FASTEST_FINGER_QUESTION_COUNT}{" "}
                 questions, 10 seconds each!
               </p>
+              {fastestFingerError && (
+                <p className={classes.transitionError}>{fastestFingerError}</p>
+              )}
               <div className={classes.transitionActions}>
                 <ShadowButton
                   design="selected"
                   iconSrc="slim-arrow-right"
                   iconPosition="right"
-                  onClick={startFastestFinger}
+                  onClick={() => void startFastestFinger()}
                 >
                   Start Fastest Finger
                 </ShadowButton>
@@ -530,7 +540,7 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
     const ffQuestion = fastestFingerQuestions[ffIndex];
     const ffTitle = "Fastest Finger Quiz".split("\n");
     return (
-      <BackgroundWrapper imageSrc={backgroundImageSrc}>
+      <BackgroundWrapper>
         <Header />
         {divider}
         <h1 className={classes.header}>
@@ -581,10 +591,7 @@ export const KnowledgeQuiz = ({ className }: KnowledgeQuizProps) => {
   }
 
   return (
-    <BackgroundWrapper
-      imageSrc={backgroundImageSrc}
-      className={clsx(className)}
-    >
+    <BackgroundWrapper className={clsx(className)}>
       <Header />
       {divider}
       <h1 className={classes.header}>

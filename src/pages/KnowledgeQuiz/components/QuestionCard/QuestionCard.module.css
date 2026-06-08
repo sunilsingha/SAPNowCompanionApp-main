@@ -4,61 +4,61 @@
 }
 
 .question {
-  font-size: var(--ion-font-size-heading-1);
+  font-size: clamp(1rem, 3.5vw, 1.25rem);
   font-weight: 700;
   line-height: 130%;
-  padding: 3.5rem 0rem;
-  color: var(--sap-brand-blue-10);
+  padding: 1rem 0;
+  color: var(--sap-brand-blue-10, #1a3e8a);
 }
 
 .answer {
-  background-color: var(--sap-brand-blue-1);
-  border-radius: 3rem;
-  margin-top: var(--ion-spacing-xxx-large);
+  background-color: var(--sap-brand-blue-1, #e5f0fa);
+  border-radius: 2rem;
+  margin-top: 0.75rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: background-color 0.5s ease-in-out;
-  font-size: 1vh;
+  font-size: 0.95rem;
 }
 
 .answer button {
-  border-radius: 3rem;
-  min-height: 3.75rem;
+  border-radius: 2rem;
+  min-height: 3rem;
   text-align: left;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: var(--ion-spacing-xxx-large);
-  font-size: var(--ion-font-size-heading-4);
+  padding: 0.875rem 1rem;
+  font-size: 0.95rem;
   font-weight: 400;
   box-sizing: border-box;
   transition: background-color 0.5s ease-in-out;
+}
 
-  &[data-state='selected'],
-  &[data-state='normal'] {
-    box-shadow: 0rem 0.0625rem 0.25rem 0rem rgb(from rgb(20, 45, 120) r g b / 25%);
-  }
+.answer button[data-state='selected'],
+.answer button[data-state='normal'] {
+  box-shadow: 0 0.0625rem 0.25rem 0 rgba(20, 45, 120, 0.25);
+}
 
-  &[data-state='selected'] {
-    color: var(--sap-brand-white);
-  }
+.answer button[data-state='selected'] {
+  color: var(--sap-brand-white, #fff);
+}
 
-  &[data-state='normal'] {
-    color: var(--sap-brand-blue-8);
-  }
+.answer button[data-state='normal'] {
+  color: var(--sap-brand-blue-8, #003366);
+}
 
-  &[data-state='success'] {
-    color: var(--sap-brand-green-8);
-    background-color: var(--sap-brand-green-1);
-    box-shadow: 0rem 0.0625rem 0.25rem 0rem rgb(from rgb(37, 111, 58) r g b / 25%);
-  }
+.answer button[data-state='success'] {
+  color: var(--sap-brand-green-8, #256f3a);
+  background-color: var(--sap-brand-green-1, #f5fae5);
+  box-shadow: 0 0.0625rem 0.25rem 0 rgba(37, 111, 58, 0.25);
+}
 
-  &[data-state='error'] {
-    color: var(--sap-brand-red-8);
-    background-color: var(--sap-brand-red-1);
-    box-shadow: 0rem 0.0625rem 0.25rem 0rem rgb(from rgb(170, 8, 8) r g b / 25%);
-  }
+.answer button[data-state='error'] {
+  color: var(--sap-brand-red-8, #840606);
+  background-color: var(--sap-brand-red-1, #ffeaf4);
+  box-shadow: 0 0.0625rem 0.25rem 0 rgba(170, 8, 8, 0.25);
 }
 
 .answer button > span {
@@ -66,7 +66,7 @@
 }
 
 .selected {
-  background-color: var(--sap-brand-blue-7);
+  background-color: var(--sap-brand-blue-7, #0057d2);
   transition: background-color 0.5s ease-in-out;
 }
 
@@ -75,8 +75,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 2rem;
-  min-height: 2.5rem;
+  gap: 1rem;
+  min-height: 2rem;
 }
 
 .answerInfo,
@@ -84,19 +84,20 @@
   left: 0;
   top: 0;
   width: 100%;
-  font-size: var(--ion-font-size-heading-5);
+  font-size: 0.875rem;
   font-weight: 400;
   text-align: left;
   transition: opacity 0.3s ease;
   white-space: nowrap;
+}
 
-  & > span {
-    padding-left: var(--ion-spacing-large);
-  }
+.answerInfo > span,
+.answerChecked > span {
+  padding-left: 0.75rem;
 }
 
 .answerInfo {
-  color: var(--sap-brand-blue-10);
+  color: var(--sap-brand-blue-10, #1a3e8a);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -108,49 +109,68 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
+}
 
-  &[data-state='success'] {
-    color: var(--sap-brand-green-8);
-  }
+.answerChecked[data-state='success'] {
+  color: var(--sap-brand-green-8, #256f3a);
+}
 
-  &[data-state='error'] {
-    color: var(--sap-brand-red-8);
-  }
+.answerChecked[data-state='error'] {
+  color: var(--sap-brand-red-8, #840606);
 }
 
 .facts {
   display: flex;
   justify-content: center;
-  gap: 3.5rem;
-  padding-bottom: 3rem;
-  margin-top: var(--ion-spacing-xxx-large);
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-top: 1rem;
 }
 
 .details {
-  padding-top: 3.5rem;
+  padding-top: 1.5rem;
   max-height: 13rem;
-  font-size: var(--ion-font-size-heading-3);
+  font-size: 1rem;
   font-weight: 350;
   line-height: 130%;
   margin: auto;
 }
 
 .iconStyleSelected {
-  --libella-icon-color: var(--sap-brand-white);
-  --libella-icon-size: var(--ion-font-size-heading-4);
+  --libella-icon-color: var(--sap-brand-white, #fff);
+  --libella-icon-size: 1rem;
 }
 
 .iconStyleCorrect {
-  --libella-icon-color: var(--sap-brand-green-8);
-  --libella-icon-size: var(--ion-font-size-heading-4);
+  --libella-icon-color: var(--sap-brand-green-8, #256f3a);
+  --libella-icon-size: 1rem;
 }
 
 .iconStyleWrong {
-  --libella-icon-color: var(--sap-brand-red-8);
-  --libella-icon-size: var(--ion-font-size-heading-4);
+  --libella-icon-color: var(--sap-brand-red-8, #840606);
+  --libella-icon-size: 1rem;
 }
 
 .iconStyleMessage {
-  --libella-icon-color: var(--sap-brand-white);
-  --libella-icon-size: var(--ion-font-size-heading-4);
+  --libella-icon-color: var(--sap-brand-white, #fff);
+  --libella-icon-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .question {
+    font-size: 1.25rem;
+    padding: 2rem 0;
+  }
+
+  .answer {
+    border-radius: 3rem;
+    margin-top: 1.5rem;
+  }
+
+  .answer button {
+    border-radius: 3rem;
+    min-height: 3.75rem;
+    padding: 1.25rem 1.5rem;
+    font-size: 1.125rem;
+  }
 }

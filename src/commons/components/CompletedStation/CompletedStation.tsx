@@ -4,11 +4,6 @@ import { BackToMapButton } from "../BackToMapButton"
 import classes from "./CompletedStation.module.css";
 import gameMap from "../../../assets/game_map.png";
 
-import {
-  BACKGROUND_IMAGE_SRC,
-  getLearningMediaKey,
-} from "../../../commons/utils";
-
 export interface LockedStationProps {
   stationNumber: number;
 }
@@ -16,10 +11,8 @@ export interface LockedStationProps {
 export const CompletedStation = ({
   stationNumber
 }: LockedStationProps) => {
-
-  const backgroundImageSrc = getLearningMediaKey(BACKGROUND_IMAGE_SRC);
   return (
-    <BackgroundWrapper imageSrc={backgroundImageSrc}>
+    <BackgroundWrapper>
       <Header />
       <div className={classes.cardWrapper}>
         <div className={classes.introBox}>

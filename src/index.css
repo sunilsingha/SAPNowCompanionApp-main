@@ -1,14 +1,22 @@
 html,
 body {
   overscroll-behavior: none;
-  font-size: clamp(4px, 2vw, 16px);
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  background-color: #142d78;
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--ion-font-family);
   margin: 0;
   padding: 0;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   color: var(--ion-primary-font);
 
   -webkit-tap-highlight-color: transparent;
@@ -18,7 +26,11 @@ body {
 #root {
   position: absolute;
   inset: 0;
-  overflow: auto;
+  width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 input,

@@ -4,13 +4,9 @@ import { Button } from "../../commons/components//Button";
 import classes from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
-import { getBaseUrl } from "../../commons/utils";
+import { getApiUrl } from "../../commons/utils";
 import { motion } from "motion/react";
 
-import {
-  BACKGROUND_IMAGE_SRC,
-  getLearningMediaKey,
-} from "../../commons/utils";
 import { useEffect, useState } from "react";
 
 export const Login = () => {
@@ -23,7 +19,7 @@ export const Login = () => {
     if (badgeScanInput) {
 			const fetchData = async () => {
 				await new Promise(resolve => setTimeout(resolve, 1000));
-				const res = await fetch(`${getBaseUrl()}/api/user/${badgeScanInput}`, {
+				const res = await fetch(getApiUrl(`/api/user/${badgeScanInput}`), {
 					method: "GET",
 				});
 				if (!res.ok) {
@@ -46,9 +42,8 @@ export const Login = () => {
     }
   }, [qrError]);
 
-  const backgroundImageSrc = getLearningMediaKey(BACKGROUND_IMAGE_SRC);
   return (
-    <BackgroundWrapper imageSrc={backgroundImageSrc}>
+    <BackgroundWrapper>
       <Header />
 			{
 				isQrCodeOpen && (

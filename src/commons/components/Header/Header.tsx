@@ -22,19 +22,29 @@ export const Header = ({ className, resetTo, onReset }: HeaderProps) => {
     }
     navigate(resetTo!, { replace: true });
   };
+
+  const logo = (
+    <img className={classes.logo} src={SAPLogo} alt="SAP" />
+  );
+
   return (
     <header className={clsx(classes.header, className)}>
-      {resetTo ? (
-        <button onClick={handleOnReset}>
-          <img src={SAPLogo} alt="SAP" />
-        </button>
-      ) : (
-        <img src={SAPLogo} alt="SAP" />
-      )}
-      {/* <p>{t('learning.header-title')}</p> */}
-      <p style={{ fontSize: "30px" }}>SAP NOW AI Tour</p>
-      <p style={{ fontSize: "25px" }}>Mumbai</p>
-      {/* <p>{t('learning.header-subtitle')}</p> */}
+      <div className={classes.topRow}>
+        <div className={classes.brandRow}>
+          {resetTo ? (
+            <button type="button" onClick={handleOnReset}>
+              {logo}
+            </button>
+          ) : (
+            logo
+          )}
+        </div>
+        <div className={classes.titleGroup}>
+          <p className={classes.title}>SAP NOW AI Tour</p>
+          <p className={classes.subtitle}>Mumbai</p>
+        </div>
+        <div className={classes.brandSpacer} aria-hidden="true" />
+      </div>
     </header>
   );
 };

@@ -1,4 +1,4 @@
-import axios from "axios";
+import { getApiUrl } from "../../../commons/utils";
 
 export interface APIResponse {
   firstName: string;
@@ -9,11 +9,12 @@ export const fetchUserPersonality = async (
   userId: string
 ): Promise<number | null> => {
   try {
-    const { data } = await axios.get(
-      `https://sap-nowmumbai-backend-dev.cfapps.in30.hana.ondemand.com/api/user/${userId}/quiz`,
-      { headers: { Accept: "application/json" } }
-    );
-    return data?.personality ?? null;
+    const response = await fetch(getApiUrl(`/api/user/${userId}/quiz`), {
+      headers: { Accept: "application/json" },
+    })
+    if (!response.ok) return null
+    const data = await response.json()
+    return data?.personality ?? null
   } catch (err) {
     console.warn("Failed to fetch personality:", err);
     return null;
@@ -22,9 +23,11 @@ export const fetchUserPersonality = async (
 
 export const fetchUserData = async (userId: string) => {
   try {
-    const { data } = await axios.get(
-      `https://sap-nowmumbai-backend-dev.cfapps.in30.hana.ondemand.com/api/user/${userId}`
-    );
+    const response = await fetch(getApiUrl(`/api/user/${userId}`))
+    if (!response.ok) {
+      throw new Error(`User fetch failed: ${response.status}`)
+    }
+    const data = await response.json()
     return {
       isStationOneDone: data.result.ST_ONE_DONE,
       isStationTwoDone: data.result.ST_TWO_DONE,
@@ -47,4 +50,3 @@ export const fetchUserData = async (userId: string) => {
     };
   }
 };
-

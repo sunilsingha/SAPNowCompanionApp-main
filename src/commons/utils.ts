@@ -37,6 +37,36 @@ export const fadeSlideY = {
   transition: { duration: 0.3, ease: 'easeInOut' },
 };
 
+const normalizeApiPath = (path: string) =>
+  path.startsWith('/') ? path : `/${path}`
+
+/** Direct backend URL (used as fallback when the dev proxy is unavailable). */
+export const getBackendUrl = () =>
+  import.meta.env.VITE_BACKEND_URL ?? ''
+
+/**
+ * Preferred API URL for the current environment.
+ * Dev/preview: same-origin `/api` via Vite proxy (phone only talks to your Mac).
+ * Production: full backend URL.
+ */
+const useApiProxy = () =>
+  import.meta.env.DEV || import.meta.env.VITE_USE_API_PROXY === 'true'
+
+export const getApiUrl = (path: string) => {
+  const normalizedPath = normalizeApiPath(path)
+
+  if (useApiProxy()) {
+    return normalizedPath
+  }
+
+  const backend = getBackendUrl()
+  return backend ? `${backend}${normalizedPath}` : normalizedPath
+}
+
+/** @deprecated Use getApiUrl instead */
 export const getBaseUrl = () => {
-  return import.meta.env.VITE_BACKEND_URL
+  if (useApiProxy()) {
+    return ''
+  }
+  return getBackendUrl()
 }
